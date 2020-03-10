@@ -939,12 +939,34 @@ In addition to the objectives above, the following guidelines are worth followin
 
 When using GitHub, enforce a rebase workflow for all of your GitHub projects (*highly recommended*).
 You can do this via your project options (i.e.
-`https://github.com/<username/organization>/<project>/settings`) and editing your merge options for
+`https://github.com/<username/<project>/settings`) and editing your merge options for
 code reviews as follows:
 
 ![GitHub Merge Options](doc/github-settings-options.png)
 
-Doing this will help maintain a clean Git history.
+In addition to the above, you'll want to add *branch* protection rules for your `master` branch. To
+do this, follow these steps:
+
+1. Visit your branch settings (i.e. `https://github.com/<username>/<project>/settings/branches`).
+1. Click the *Add rule* button.
+1. For *branch name pattern*, enter: `master`.
+1. Check *Require pull request reviews before merging*.
+1. Set *Required approving reviews* to `2` as a minimum.
+1. Check *Dismiss stale pull request approvals when new commits are pushed*.
+1. Check *Require review from Code Owners*.
+1. Check *Require status checks to pass before merging*.
+1. Check *Require branches to be up to date before merging*.
+1. Check *Require linear history* (pairs well with the merge options mentioned above).
+1. Check *Include administrators*.
+1. Uncheck *Require signed commits* (only necessary for tags).
+1. Uncheck *Allow force pushes*.
+1. Uncheck *Allow deletions*.
+
+With the above applied, you should have the following result:
+
+![GitHub Branch Protections](doc/github-settings-branch_protections.png)
+
+Applying the above changes will help maintain a clean Git history.
 
 ## Tests
 
