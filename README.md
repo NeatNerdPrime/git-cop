@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="git-cop.png" alt="Git Cop Icon"/>
+  <img src="https://www.alchemists.io/images/projects/git-cop/icon.png" alt="Git Cop Icon"/>
 </p>
 
 # Git Cop
@@ -953,7 +953,7 @@ You can do this via your project options (i.e.
 `https://github.com/<username/<project>/settings`) and editing your merge options for
 code reviews as follows:
 
-![GitHub Merge Options](doc/github-settings-options.png)
+![GitHub Merge Options](https://www.alchemists.io/images/projects/git-cop/screenshots/github-settings-options.png)
 
 In addition to the above, you'll want to add *branch* protection rules for your `master` branch. To
 do this, follow these steps:
@@ -975,7 +975,7 @@ do this, follow these steps:
 
 With the above applied, you should have the following result:
 
-![GitHub Branch Protections](doc/github-settings-branch_protections.png)
+![GitHub Branch Protections](https://www.alchemists.io/images/projects/git-cop/screenshots/github-settings-branch_protections.png)
 
 Applying the above changes will help maintain a clean Git history.
 
