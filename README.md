@@ -21,14 +21,15 @@ debuggable project history.
   - [Screencasts](#screencasts)
   - [Requirements](#requirements)
   - [Setup](#setup)
-    - [Install](#install)
+    - [Production](#production)
+    - [Development](#development)
+  - [Usage](#usage)
+    - [Command Line Interface (CLI)](#command-line-interface-cli)
+    - [Rake](#rake)
     - [Configuration](#configuration)
       - [Enablement](#enablement)
       - [Severity Levels](#severity-levels)
       - [Regular Expressions](#regular-expressions)
-    - [Rake](#rake)
-  - [Usage](#usage)
-    - [Command Line Interface (CLI)](#command-line-interface-cli)
     - [Git Hooks](#git-hooks)
       - [Commit Message](#commit-message)
       - [Post Commit](#post-commit)
@@ -95,11 +96,73 @@ debuggable project history.
 
 ## Setup
 
-### Install
+### Production
 
-Type the following to install:
+To install, run:
 
     gem install git-cop
+
+### Development
+
+To contribute, run:
+
+    git clone https://github.com/bkuhlmann/git-cop.git
+    cd git-cop
+    bin/setup
+
+You can also use the IRB console for direct access to all objects:
+
+    bin/console
+
+## Usage
+
+### Command Line Interface (CLI)
+
+From the command line, type: `git-cop --help`
+
+    git-cop --hook                # Add Git Hook support.
+    git-cop -c, [--config]        # Manage gem configuration.
+    git-cop -h, [--help=COMMAND]  # Show this message or get help for a command.
+    git-cop -p, [--police]        # Check feature branch for issues.
+    git-cop -v, [--version]       # Show gem version.
+
+To check if your Git commit history is clean, run: `git-cop --police`. It will exit with a failure
+if at least one issue, with error severity, is detected.
+
+This gem does not check commits on `master`. This is intentional as you would, generally, not want
+to rewrite or fix commits on `master`. This gem is best used on feature branches as it automatically
+detects all commits made since `master` on the feature branch.
+
+Here is an example workflow, using gem defaults with issues detected:
+
+    cd example
+    git checkout -b test
+    touch text.txt
+    git add --all .
+    git commit --message "This is a bogus commit message that is also terribly long and will word wrap"
+    git-cop --police
+
+    # Output:
+    Running Git Cop...
+
+    83dbad531d84a184e55cbb38c5b2a4e5fa5bcaee (Brooke Kuhlmann, 0 seconds ago): This is a bogus commit message that is also terribly long and will word wrap.
+      Commit Body Presence Warning. Use minimum of 1 line (non-empty).
+      Commit Subject Length Error. Use 72 characters or less.
+      Commit Subject Prefix Error. Use: /Fixed/, /Added/, /Updated/, /Removed/, /Refactored/.
+      Commit Subject Suffix Error. Avoid: /\./, /\?/, /\!/.
+
+    1 commit inspected. 4 issues detected (1 warning, 3 errors).
+
+### Rake
+
+This gem provides optional Rake tasks. They can be added to your project by adding the following
+requirement to the top of your `Rakefile`:
+
+    require "git/cop/rake/setup"
+
+Now, when running `bundle exec rake -T`, you'll see `git_cop` included in the list.
+
+If you need a concrete example, check out the [Rakefile](Rakefile) of this project for details.
 
 ### Configuration
 
@@ -260,56 +323,6 @@ session and using `Regexp.new` or `Regexp.escape` to experiment with the types o
 want to turn into regular expressions. *For purposes of the YAML configuration, these need to be
 expressed as strings with special characters escaped properly for internal conversion to a regular
 expression.*
-
-### Rake
-
-This gem provides optional Rake tasks. They can be added to your project by adding the following
-requirement to the top of your `Rakefile`:
-
-    require "git/cop/rake/setup"
-
-Now, when running `bundle exec rake -T`, you'll see `git_cop` included in the list.
-
-If you need a concrete example, check out the [Rakefile](Rakefile) of this project for details.
-
-## Usage
-
-### Command Line Interface (CLI)
-
-From the command line, type: `git-cop --help`
-
-    git-cop --hook                # Add Git Hook support.
-    git-cop -c, [--config]        # Manage gem configuration.
-    git-cop -h, [--help=COMMAND]  # Show this message or get help for a command.
-    git-cop -p, [--police]        # Check feature branch for issues.
-    git-cop -v, [--version]       # Show gem version.
-
-To check if your Git commit history is clean, run: `git-cop --police`. It will exit with a failure
-if at least one issue, with error severity, is detected.
-
-This gem does not check commits on `master`. This is intentional as you would, generally, not want
-to rewrite or fix commits on `master`. This gem is best used on feature branches as it automatically
-detects all commits made since `master` on the feature branch.
-
-Here is an example workflow, using gem defaults with issues detected:
-
-    cd example
-    git checkout -b test
-    touch text.txt
-    git add --all .
-    git commit --message "This is a bogus commit message that is also terribly long and will word wrap"
-    git-cop --police
-
-    # Output:
-    Running Git Cop...
-
-    83dbad531d84a184e55cbb38c5b2a4e5fa5bcaee (Brooke Kuhlmann, 0 seconds ago): This is a bogus commit message that is also terribly long and will word wrap.
-      Commit Body Presence Warning. Use minimum of 1 line (non-empty).
-      Commit Subject Length Error. Use 72 characters or less.
-      Commit Subject Prefix Error. Use: /Fixed/, /Added/, /Updated/, /Removed/, /Refactored/.
-      Commit Subject Suffix Error. Avoid: /\./, /\?/, /\!/.
-
-    1 commit inspected. 4 issues detected (1 warning, 3 errors).
 
 ### Git Hooks
 
