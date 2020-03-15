@@ -3,8 +3,8 @@
 require_relative "lib/git/cop/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = Git::Cop::Identity.name
-  spec.version = Git::Cop::Identity.version
+  spec.name = Git::Cop::Identity::NAME
+  spec.version = Git::Cop::Identity::VERSION
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]

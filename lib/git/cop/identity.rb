@@ -4,21 +4,10 @@ module Git
   module Cop
     # Gem identity information.
     module Identity
-      def self.name
-        "git-cop"
-      end
-
-      def self.label
-        "Git Cop"
-      end
-
-      def self.version
-        "4.0.2"
-      end
-
-      def self.version_label
-        "#{label} #{version}"
-      end
+      NAME = "git-cop"
+      LABEL = "Git Cop"
+      VERSION = "4.0.2"
+      VERSION_LABEL = "#{LABEL} #{VERSION}"
     end
   end
 end

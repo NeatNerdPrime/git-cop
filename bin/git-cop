@@ -5,5 +5,5 @@ require "git/cop"
 require "git/cop/cli"
 require "git/cop/identity"
 
-Process.setproctitle Git::Cop::Identity.version_label
+Process.setproctitle Git::Cop::Identity::VERSION_LABEL
 Git::Cop::CLI.start

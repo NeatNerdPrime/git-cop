@@ -15,7 +15,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
   end
 
   let :configuration do
-    Runcom::Config.new "#{Git::Cop::Identity.name}/configuration.yml", defaults: defaults
+    Runcom::Config.new "#{Git::Cop::Identity::NAME}/configuration.yml", defaults: defaults
   end
 
   let(:branch) { "test" }

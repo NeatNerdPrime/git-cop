@@ -11,14 +11,14 @@ module Git
     class CLI < Thor
       include Thor::Actions
 
-      package_name Identity.version_label
+      package_name Identity::VERSION_LABEL
 
       def self.configuration
         defaults = Styles::Abstract.descendants.reduce({}) do |settings, cop|
           settings.merge cop.id => cop.defaults
         end
 
-        Runcom::Config.new "#{Identity.name}/configuration.yml", defaults: defaults
+        Runcom::Config.new "#{Identity::NAME}/configuration.yml", defaults: defaults
       end
 
       def initialize args = [], options = {}, config = {}
@@ -63,7 +63,7 @@ module Git
         collector = analyze_commits options.commits
         abort if collector.errors?
       rescue Errors::Base => error
-        abort colorizer.red("#{Identity.label}: #{error.message}")
+        abort colorizer.red("#{Identity::LABEL}: #{error.message}")
       end
 
       desc "--hook", "Add Git Hook support."
@@ -79,13 +79,13 @@ module Git
           help "--hook"
         end
       rescue Errors::Base => error
-        abort colorizer.red("#{Identity.label}: #{error.message}")
+        abort colorizer.red("#{Identity::LABEL}: #{error.message}")
       end
 
       desc "-v, [--version]", "Show gem version."
       map %w[-v --version] => :version
       def version
-        say Identity.version_label
+        say Identity::VERSION_LABEL
       end
 
       desc "-h, [--help=COMMAND]", "Show this message or get help for a command."

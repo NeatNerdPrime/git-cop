@@ -15,7 +15,7 @@ module Git
         end
 
         def to_s
-          "Running #{Identity.label}...#{branch_report}\n" \
+          "Running #{Identity::LABEL}...#{branch_report}\n" \
           "#{commit_total}. #{issue_totals}.\n"
         end
 
