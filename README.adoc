@@ -30,7 +30,7 @@ toc::[]
 == Screencasts
 
 [link=https://www.alchemists.io/screencasts/git_cop.html]
-image::https://www.alchemists.io/images/screencasts/git_cop.png[Screencast]
+image::https://www.alchemists.io/images/screencasts/git_cop/cover-original.png[Screencast,role=focal_point]
 
 == Requirements
 
