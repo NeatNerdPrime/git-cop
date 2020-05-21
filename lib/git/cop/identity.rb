@@ -6,7 +6,7 @@ module Git
     module Identity
       NAME = "git-cop"
       LABEL = "Git Cop"
-      VERSION = "4.1.0"
+      VERSION = "4.1.1"
       VERSION_LABEL = "#{LABEL} #{VERSION}"
     end
   end
