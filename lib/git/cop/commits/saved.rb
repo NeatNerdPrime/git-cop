@@ -92,7 +92,7 @@ module Git
         def method_missing name, *arguments, &block
           return super unless respond_to_missing? name
 
-          String data[%r(\<#{name}\>(?<content>.*?)\<\/#{name}\>)m, :content]
+          String data[%r(<#{name}>(?<content>.*?)</#{name}>)m, :content]
         end
 
         def respond_to_missing? name, include_private = false

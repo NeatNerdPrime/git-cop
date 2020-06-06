@@ -74,7 +74,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
 
           expect(&result).to raise_error(
             Git::Cop::Errors::Base,
-            /Invalid\scop\:\sinvalid_cop_id.+/
+            /Invalid\scop:\sinvalid_cop_id.+/
           )
         end
       end

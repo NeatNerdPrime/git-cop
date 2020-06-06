@@ -38,7 +38,7 @@ RSpec.describe Git::Cop::CLI do
       it "prints commit label" do
         Dir.chdir git_repo_dir do
           result = -> { cli }
-          pattern = /[0-9a-f]{40}\s\(Test\sExample\,\s\d\sseconds\sago\)\:\sAdded\stest\sfile/
+          pattern = /[0-9a-f]{40}\s\(Test\sExample,\s\d\sseconds\sago\):\sAdded\stest\sfile/
 
           expect(&result).to output(pattern).to_stdout
         end
@@ -140,7 +140,7 @@ RSpec.describe Git::Cop::CLI do
 
       Dir.chdir git_repo_dir do
         result = -> { cli }
-        expect(&result).to raise_error(SystemExit, /Git\sCop\:\sTest\./)
+        expect(&result).to raise_error(SystemExit, /Git\sCop:\sTest\./)
       end
     end
   end
@@ -192,7 +192,7 @@ RSpec.describe Git::Cop::CLI do
       it "prints error" do
         Dir.chdir git_repo_dir do
           result = -> { cli }
-          expect(&result).to raise_error(SystemExit, %r(Invalid.+path.+\/a\/bogus\/path.+))
+          expect(&result).to raise_error(SystemExit, %r(Invalid.+path.+/a/bogus/path.+))
         end
       end
     end

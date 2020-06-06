@@ -13,7 +13,7 @@ module Git
         using Refinements::Strings
 
         SUBJECT_LINE = 1
-        SCISSOR_PATTERN = /\#\s\-+\s\>8\s\-+\n.+/m.freeze
+        SCISSOR_PATTERN = /\#\s-+\s>8\s-+\n.+/m.freeze
 
         attr_reader :sha, :raw_body
 
@@ -57,7 +57,7 @@ module Git
         # :reek:FeatureEnvy
         def body_paragraphs
           body_without_trailers.split("\n\n")
-                               .map { |line| line.sub(/\A\n/, "") }
+                               .map { |line| line.delete_prefix "\n" }
                                .map(&:chomp)
                                .reject { |line| line.start_with? "#" }
         end

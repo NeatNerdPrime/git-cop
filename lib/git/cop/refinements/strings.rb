@@ -12,11 +12,11 @@ module Git
           end
 
           def fixup?
-            match?(/\Afixup\!\s/)
+            match?(/\Afixup!\s/)
           end
 
           def squash?
-            match?(/\Asquash\!\s/)
+            match?(/\Asquash!\s/)
           end
         end
       end

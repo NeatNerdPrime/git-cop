@@ -9,11 +9,11 @@ module Git
 
           DEFAULT_MATCH_PATTERN = /
             (?<key>\A.+)         # Key (anchored to start of line).
-            \:                   # Key delimiter.
+            :                    # Key delimiter.
             \s?                  # Space delimiter (optional).
             (?<name>.*?)         # Collaborator name (smallest possible).
             \s?                  # Space delimiter (optional).
-            (\<(?<email>.+)\>)?  # Collaborator email (optional).
+            (<(?<email>.+)>)?    # Collaborator email (optional).
             \Z                   # End of line.
           /x.freeze
 
