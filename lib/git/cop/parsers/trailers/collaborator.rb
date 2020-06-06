@@ -9,11 +9,11 @@ module Git
 
           DEFAULT_MATCH_PATTERN = /
             (?<key>\A.+)         # Key (anchored to start of line).
-            :                    # Key delimiter.
-            \s?                  # Space delimiter (optional).
+            (?<delimiter>:)      # Key delimiter.
+            (?<key_space>\s?)    # Space delimiter (optional).
             (?<name>.*?)         # Collaborator name (smallest possible).
-            \s?                  # Space delimiter (optional).
-            (<(?<email>.+)>)?    # Collaborator email (optional).
+            (?<name_space>\s?)   # Space delimiter (optional).
+            (?<email><.+>)?      # Collaborator email (optional).
             \Z                   # End of line.
           /x.freeze
 
@@ -36,7 +36,7 @@ module Git
           end
 
           def email
-            String matches["email"]
+            String(matches["email"]).delete_prefix("<").delete_suffix(">")
           end
 
           def match?
