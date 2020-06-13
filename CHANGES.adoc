@@ -1,5 +1,13 @@
 = Changes
 
+== 4.2.0 (2020-06-13)
+
+- Fixed Lint/MixedRegexpCaptureTypes issue with trailer collaborator
+- Fixed Rubocop regex and parenthesis issues
+- Added gemspec post install message
+- Added version release notes
+- Updated GitHub templates
+
 == 4.1.1 (2020-05-21)
 
 - Updated Pry gem dependencies
