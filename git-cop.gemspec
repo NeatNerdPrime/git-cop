@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
   spec.homepage = "https://www.alchemists.io/projects/git-cop"
-  spec.summary = "A command line interface for linting Git commits."
+  spec.summary = "DEPRECATED: Use Git Lint (https://www.alchemists.io/projects/git-lint) instead."
   spec.license = "Apache-2.0"
   spec.post_install_message = "Git Cop will be terminated on 2021-01-01 and has been replaced by " \
                               "Git Lint: https://www.alchemists.io/projects/git-lint. " \
