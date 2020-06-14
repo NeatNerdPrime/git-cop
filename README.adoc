@@ -6,7 +6,7 @@
 In the meantime, please use link:https://www.alchemists.io/projects/git-lint[Git Lint] as it is a
 direct port of this project.
 
-Git Lint is officially supported by link:https://www.alchemists.io/projects/gemsmith[Gemsmith] as
-well.
+link:https://www.alchemists.io/projects/git-lint[Git Lint] is officially supported by
+link:https://www.alchemists.io/projects/gemsmith[Gemsmith] as well.
 
 Thanks and see you over at the link:https://www.alchemists.io/projects/git-lint[Git Lint] site!

@@ -1,5 +1,10 @@
 = Changes
 
+== 4.2.1 (2020-06-14)
+
+- Added gemspec summary deprecation warning.
+- Updated gemspec URLs to point to Git Lint
+
 == 4.2.0 (2020-06-13)
 
 - Fixed Lint/MixedRegexpCaptureTypes issue with trailer collaborator
